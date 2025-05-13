@@ -1,0 +1,23 @@
+ ListNode* partition(ListNode* head, int x) {
+        ListNode* dummy1 = new ListNode(0);  // List for nodes < x
+        ListNode* dummy2 = new ListNode(0);  // List for nodes >= x
+        ListNode* tail1 = dummy1;
+        ListNode* tail2 = dummy2;
+        ListNode* curr = head;
+
+        while (curr) {
+            if (curr->val < x) {
+                tail1->next = curr;
+                tail1 = tail1->next;
+            } else {
+                tail2->next = curr;
+                tail2 = tail2->next;
+            }
+            curr = curr->next;
+        }
+
+        tail2->next = nullptr;         // End the second list properly
+        tail1->next = dummy2->next;    // Combine both lists
+
+        return dummy1->next;
+    }

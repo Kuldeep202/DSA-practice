@@ -2,7 +2,7 @@ class Solution {
 public:
     string minWindow(string s, string t) {
          int n = s.size(), m = t.size();
-         map<int,int> mpp;
+         vector<int> mpp(256,0);
          if(m>n) return "";
         for(int i=0; i<m; i++){
             mpp[t[i]]++;

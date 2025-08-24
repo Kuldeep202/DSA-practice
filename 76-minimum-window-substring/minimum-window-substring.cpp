@@ -15,15 +15,15 @@ public:
                 count++;
             }
                 mpp[s[i]]--;
-            while(mpp[s[j]]<0){
-                mpp[s[j]]++;
-                j++;
-            }
-            
-            if(i-j+1<minlen&& count==m){
+           while(count==m){
+            if(minlen>i-j+1){
                 minlen=i-j+1;
                 sindex=j;
             }
+            mpp[s[j]]++;
+            if(mpp[s[j]]>0) count--;
+            j++;
+           }
         }
         if(sindex==-1) return "";
         return s.substr(sindex,minlen);

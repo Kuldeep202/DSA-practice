@@ -1,0 +1,50 @@
+class Solution {
+    pair<int, int> findCount(int& i, int& j , string& v1, string& v2){
+        int cnt1 = 0;
+        int cnt2 = 0;
+
+        while(i<v1.size() && v1[i] != '.'){
+            cnt1 = cnt1*10 + (v1[i] - '0');
+            i++;
+        }
+
+        while(j<v2.size() && v2[j] != '.'){
+            cnt2 = cnt2*10 + (v2[j] - '0');
+            j++;
+        }
+
+        i++,j++;
+
+        return {cnt1, cnt2};
+
+    }
+public:
+    int compareVersion(string version1, string version2) {
+        int i = 0;
+        int j = 0;
+        int n = version1.length();
+        int m = version2.length();
+
+        while(i<n && j<m){
+            pair<int,int> values = findCount(i, j , version1, version2);
+            if(values.first > values.second) return 1;
+            else if(values.first < values.second) return -1;
+        }
+
+        while(i < n) {
+            if(version1[i] != '0' && version1[i] != '.'){
+                return 1;
+            }
+            i++;
+        }
+
+        while(j<m){
+            if(version2[j] != '0' && version2[j] != '.'){
+                return -1;
+            }
+            j++;
+        }
+
+        return 0;
+    }
+};

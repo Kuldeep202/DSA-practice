@@ -1,13 +1,15 @@
 class Solution {
 public:
-     static int largestPerimeter(vector<int>& nums) {
-        const int n=nums.size();
-        sort(nums.begin(), nums.end());
-        for(int i=n-1; i>1; i--){
-            if (nums[i]<nums[i-1]+nums[i-2]) 
-            return nums[i]+nums[i-1]+nums[i-2];
+    int largestPerimeter(vector<int>& arr) {
+        int ans=0;
+        sort(arr.begin(),arr.end());
+        for(int i=0; i<arr.size()-2; i++){
+            int sum=arr[i]+arr[i+1];
+            if(sum>arr[i+2]&&arr[i]<=arr[i+1]&&arr[i+1]<=arr[i+2]){
+                
+                ans=max(ans,arr[i]+arr[i+1]+arr[i+2]);
+            }
         }
-        return 0;
-        
+        return ans;
     }
 };

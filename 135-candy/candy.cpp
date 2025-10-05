@@ -2,7 +2,7 @@ class Solution {
 public:
     int candy(vector<int>& ratings) {
         int n=ratings.size();
-        int sum=0;
+        // int sum=0;
         vector<int> v(n,1);
         for(int i=1; i<n; i++){
             if(ratings[i]>ratings[i-1]){
@@ -16,9 +16,11 @@ public:
         }
 
         
-        for(auto c:v){
-            sum+=c;
-        }
+        // for(auto c:v){
+        //     sum+=c;
+        // }
+        int sum = accumulate(v.begin(), v.end(), 0);
+
         return sum;
     }
 };

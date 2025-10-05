@@ -16,8 +16,8 @@ public:
         }
 
         
-        for(int i=0; i<v.size(); i++){
-            sum+=v[i];
+        for(auto c:v){
+            sum+=c;
         }
         return sum;
     }

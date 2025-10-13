@@ -1,19 +1,19 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 class Solution {
 public:
-    vector<string> removeAnagrams(vector<string> w) {
-        vector<string> r;
-        for (auto& s : w) {
-            if (!r.empty()) {
-                string a = r.back(), b = s;
-                sort(a.begin(), a.end());
-                sort(b.begin(), b.end());
-                if (a == b) continue;
+    vector<string> removeAnagrams(vector<string>& words) {
+         vector<string> ans;
+        string prev=" ";
+        
+         for (auto &word : words) {
+            string sorted_word = word;          
+            sort(sorted_word.begin(), sorted_word.end());
+
+            if (sorted_word != prev) {         
+                ans.push_back(word);
+                prev = sorted_word;
             }
-            r.push_back(s);
         }
-        return r;
+        return ans;
+    return ans;
     }
 };

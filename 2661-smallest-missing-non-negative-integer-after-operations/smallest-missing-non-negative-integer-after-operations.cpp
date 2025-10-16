@@ -4,8 +4,15 @@ public:
         int ans=0;
         map<int,int> mpp;
         for(auto it : nums){
-            int x=((it%value)+value)%value;
+            int x=(it%value);
+            if(x<0){
+              x = (x + value) % value;
+               mpp[x]++;
+            }
+            else{
             mpp[x]++;
+
+            }
         }
 
         while(1){
